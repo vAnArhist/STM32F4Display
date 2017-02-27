@@ -1,0 +1,18 @@
+1. BL CTRL backlight; 	purple (PWM)
+
+2. LCD CS; 		orange		FSMC_NE1 			(PD7)
+0-ACTIVE
+
+3. NC;			red			NC
+4. RD; 			brown		FSMC_NOE (read)		(PD4)
+WR = 1, RD = 0
+
+5. RS; 			black		FSMC_A19 			(PE3)
+RS = 1 : Instruction Register
+RS = 0 : Data Register
+
+6. RST; 		green		Reset chip 0-ACTIVE	(PD6)
+7. WR; 			yellow		FSMC_NWE (write) 	(PD5)
+WR = 0, RD = 1
+
+8. TP-IRQ; 		yellow		0-pressing 			(PB9)

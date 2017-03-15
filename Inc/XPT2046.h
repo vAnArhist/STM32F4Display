@@ -5,10 +5,11 @@
 #include "GUI.h"
 
 void XPT2046_Init(void);
-void touchGetX(void);
-void touchGetY(void);
+int touchGetX(void);
+int touchGetY(void);
 void GetTouchState (void);
-
+void Callibrate(void);
+void Usrednenie_XY(int touch_x, int touch_y, uint8_t count_read);
 
 typedef struct {
 	unsigned char Pressed;

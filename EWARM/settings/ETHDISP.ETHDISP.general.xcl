@@ -1,0 +1,15 @@
+"E:\EWARM\arm\bin\armproc.dll" 
+
+"E:\EWARM\arm\bin\armstlink2.dll" 
+
+"E:\WORK\ALL\ETHDISP\EWARM\ETHDISP\Exe\ETHDISP.out" 
+
+--plugin "E:\EWARM\arm\bin\armbat.dll" 
+
+--device_macro "E:\EWARM\arm\config\debugger\ST\STM32F4xx.dmac" 
+
+--flash_loader "E:\EWARM\arm\config\flashloader\ST\FlashSTM32F4xxx.board" 
+
+
+
+

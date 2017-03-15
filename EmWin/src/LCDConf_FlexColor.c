@@ -67,7 +67,6 @@ Purpose     : Display controller configuration (single layer)
 //
 #define XSIZE_PHYS  240 // To be adapted to x-screen size
 #define YSIZE_PHYS  320 // To be adapted to y-screen size
-
 /*********************************************************************
 *
 *       Configuration checking
@@ -181,7 +180,7 @@ void LCD_X_Config(void) {
   // Orientation
   //
   Config.Orientation = GUI_SWAP_XY | GUI_MIRROR_X;//ориентация
-  Config.RegEntryMode = (1<<12)|(1<<5)|(1<<4)|(0<<3);//((1<<12)|(1<<5)|(1<<4)|(0<<3))
+  Config.RegEntryMode = 0x0030;//((1<<12)|(1<<5)|(1<<4)|(0<<3))
   Config.NumDummyReads = -1;
   GUIDRV_FlexColor_Config(pDevice, &Config);
   //

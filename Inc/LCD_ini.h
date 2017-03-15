@@ -15,8 +15,9 @@
 
 #include "stm32f4xx_hal.h"
 #define CMD_ADR *(uint16_t *)0x60000000 //запись команд
-#define DAT_ADR *(uint16_t *)0x60100000 //запись даннх (А19+1 влево) 
+#define DAT_ADR *(uint16_t *)0x60100000 //запись данных (А19+1 влево) 
 #define ILI9325_DATA_REG 0x22	        //RAM DATA REGISTER LCD
 void LCD_ini(void);
 void LCD_Clear(uint16_t color);
+
 #endif

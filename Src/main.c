@@ -3,28 +3,37 @@
   * File Name          : main.c
   * Description        : Main program body
   ******************************************************************************
-  *
-  ******************************************************************************
-  */
+  *Example of working LwIP Stack and EmWin GUI interface
+  *By Lopashchenko Ivan 28.02.2017 A.D
+  *****************************************************************************/
 /* Includes ------------------------------------------------------------------*/
+#include "main.h"       //some Pin definition
 #include "stm32f4xx_hal.h"
+#include "lwip.h"       //TCP-IP STACK
 
 /* USER CODE BEGIN Includes */
-#include "LCD_ini.h"
-#include "XPT2046.h"
-#include "GUI.h"
-#include "WindowDLG.h"
+#include "lwip.h"          //TCP-IP STACK
+#include "LCD_ini.h"      //LCD INIT
+#include "XPT2046.h"     //Touchscreen
+#include "GUI.h"        //GUI
+#include "WindowDLG.h" //определения функций 
+#include "my_tcp.h"    //фунция определения пересыла TCP
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
 SPI_HandleTypeDef hspi2;
 
+UART_HandleTypeDef huart4;
+UART_HandleTypeDef huart1;
+
 SRAM_HandleTypeDef hsram1;
 
 /* USER CODE BEGIN PV */
+extern int touch_y, touch_x;    //global var. for touch
+extern unsigned char touch_en; //touch Interrupt(1-pressed)
+
 /* Private variables ---------------------------------------------------------*/
-extern int touch_y, touch_x;
-extern unsigned char touch_en;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -33,22 +42,50 @@ void Error_Handler(void);
 static void MX_GPIO_Init(void);
 static void MX_FSMC_Init(void);
 static void MX_SPI2_Init(void);
+static void MX_UART4_Init(void);
+static void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN PFP */
-
 /* Private function prototypes -----------------------------------------------*/
-
+extern struct netif gnetif; 
+char transmitBuffer[256];
+char receiveBuffer[512];
+char rec[512];
+uint8_t IP_ADDRESS[4];
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
-
+void User_notification(struct netif *netif) 
+{
+  if (netif_is_up(&gnetif))
+  {
+    GUI_SetFont(&GUI_Font8x16);
+    GUI_SetBkColor(GUI_DARKGREEN);GUI_Clear();
+    GUI_SetTextMode(GUI_TM_NORMAL);
+    GUI_DispStringHCenterAt("LWIP_IS_INIT_PROPERLY" , 160, 10);
+    //GUI_DispStringHCenterAt(("IP_IS_%i",(const char *)IP_ADDRESS) , 260, 10);
+    //GUI_DispString("netif_is_up");
+    /* Turn On LED 1 to indicate ETH and LwIP init success*/
+    //HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
+  }
+  else
+  {     
+    GUI_SetFont(&GUI_Font8x16);
+    GUI_SetBkColor(GUI_BLUE);
+    GUI_Clear();
+    GUI_SetTextMode(GUI_TM_NORMAL);
+    GUI_DispStringHCenterAt("LWIP_IS_NOT_INIT_PROPERLY" , 160, 10);
+    /* Turn On LED 2 to indicate ETH and LwIP init error */
+    //HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
+  } 
+}
 /* USER CODE END 0 */
 
 int main(void)
 {
 
   /* USER CODE BEGIN 1 */
- 
+
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -63,32 +100,56 @@ int main(void)
   MX_GPIO_Init();
   MX_FSMC_Init();
   MX_SPI2_Init();
-
+  MX_UART4_Init();
+  MX_USART1_UART_Init();
+  MX_LWIP_Init();
   /* USER CODE BEGIN 2 */
-  //LCD_ini();
+   //LCD_ini();
   //LCD_Clear(0x051F);
-  __HAL_RCC_CRC_CLK_ENABLE();
-  GUI_Init();
-  CreateWindow();
+  __HAL_RCC_CRC_CLK_ENABLE();   //for GUI INIT only
+  GUI_Init();                   //GUI INIT
+  //CreateWindow();  
   XPT2046_Init();
+  MyTCP_init();
+  //GUI_SetFont(&GUI_Font8x16);
+//GUI_SetBkColor(GUI_RED);GUI_Clear();
+//GUI_SetPenSize(10);
+//GUI_SetColor(GUI_MAGENTA);
+//GUI_DrawLine(80, 10, 240, 90);
+//GUI_DrawLine(80, 90, 240, 10);
+//GUI_SetBkColor(GUI_BLACK);
+//GUI_SetColor(GUI_WHITE);
+//GUI_SetTextMode(GUI_TM_NORMAL);
+//GUI_DispStringHCenterAt("GUI_TM_NORMAL" , 160, 10);
+//GUI_SetTextMode(GUI_TM_REV);
+//GUI_DispStringHCenterAt("GUI_TM_REV" , 160, 26);
+//GUI_SetTextMode(GUI_TM_TRANS);
+//GUI_DispStringHCenterAt("GUI_TM_TRANS" , 160, 42);
+//GUI_SetTextMode(GUI_TM_XOR);
+//GUI_DispStringHCenterAt("GUI_TM_XOR" , 160, 58);
+//GUI_SetTextMode(GUI_TM_TRANS | GUI_TM_REV);
+//GUI_DispStringHCenterAt("GUI_TM_TRANS | GUI_TM_REV", 160, 74);
+  User_notification(&gnetif);  
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {  
+  {
+    
+    MX_LWIP_Process();
     GetTouchState();
     if (touch_en == 1){
-    touchGetX();
-    touchGetY();
+    Usrednenie_XY(touch_x,touch_y, 20);
     Callibrate();}
     GUI_Delay(100);
-  }
   /* USER CODE END WHILE */
 
   /* USER CODE BEGIN 3 */
 
+  }
   /* USER CODE END 3 */
+
 }
 
 /** System Clock Configuration
@@ -169,6 +230,44 @@ static void MX_SPI2_Init(void)
 
 }
 
+/* UART4 init function */
+static void MX_UART4_Init(void)
+{
+
+  huart4.Instance = UART4;
+  huart4.Init.BaudRate = 115200;
+  huart4.Init.WordLength = UART_WORDLENGTH_8B;
+  huart4.Init.StopBits = UART_STOPBITS_1;
+  huart4.Init.Parity = UART_PARITY_NONE;
+  huart4.Init.Mode = UART_MODE_TX_RX;
+  huart4.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart4.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+}
+
+/* USART1 init function */
+static void MX_USART1_UART_Init(void)
+{
+
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 115200;
+  huart1.Init.WordLength = UART_WORDLENGTH_8B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_NONE;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+
+}
+
 /** Configure pins as 
         * Analog 
         * Input 
@@ -190,30 +289,31 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, GPIO_PIN_1, GPIO_PIN_RESET);
-
+  HAL_GPIO_WritePin(GPIOD, LED_G_Pin|LCD_CS_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
+  
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12|GPIO_PIN_6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(SPI_CS_GPIO_Port, SPI_CS_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin : PC1 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PA1 */
-  GPIO_InitStruct.Pin = GPIO_PIN_1;
+  /*Configure GPIO pin : Touch_IRQ_Pin */
+  GPIO_InitStruct.Pin = Touch_IRQ_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(Touch_IRQ_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PD12 PD6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_6;
+  /*Configure GPIO pins : LED_G_Pin LCD_CS_Pin */
+  GPIO_InitStruct.Pin = GPIO_PIN_13|LED_G_Pin|LCD_CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : SPI_CS_Pin */
+  GPIO_InitStruct.Pin = SPI_CS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(SPI_CS_GPIO_Port, &GPIO_InitStruct);
 
 }
 

@@ -20,7 +20,7 @@
 
 // USER START (Optionally insert additional includes)
 // USER END
-
+#include "stm32f4xx.h"
 #include "WindowDLG.h"
 
 /*********************************************************************
@@ -32,7 +32,8 @@
 #define ID_WINDOW_0   (GUI_ID_USER + 0x00)
 #define ID_EDIT_0     (GUI_ID_USER + 0x01)
 #define ID_BUTTON_0   (GUI_ID_USER + 0x02)
-
+//#define BUTTON_REACT_ON_LEVEL 1 //button reaction 
+#define BUTTON_BKCOLOR1_DEFAULT GUI_DARKGREEN
 extern GUI_CONST_STORAGE GUI_FONT GUI_FontArial16;
 // USER START (Optionally insert additional defines)
 // USER END
@@ -85,11 +86,11 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     // Initialization of 'Edit'
     //
     hItem = WM_GetDialogItem(pMsg->hWin, ID_EDIT_0);
-    EDIT_SetText(hItem, "Привет");
+    EDIT_SetText(hItem, "Элемент");
 		EDIT_SetFont(hItem, &GUI_FontArial16);
 	
 		hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_0);
-    BUTTON_SetText(hItem, "Привет");
+    BUTTON_SetText(hItem, "ТЕСТ");
 		BUTTON_SetFont(hItem, &GUI_FontArial16);
     // USER START (Optionally insert additional code for further widget initialization)
     // USER END
@@ -119,15 +120,20 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
     case ID_BUTTON_0: // Notifications sent by 'Calc'
       switch(NCode) {
       case WM_NOTIFICATION_CLICKED:
-        // USER START (Optionally insert code for reacting on notification message)
+        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_0);
+        BUTTON_SetText(hItem, "Нажато");// USER START (Optionally insert code for reacting on notification message)
         // USER END
         break;
       case WM_NOTIFICATION_RELEASED:
-        // USER START (Optionally insert code for reacting on notification message)
+        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_0);
+        BUTTON_SetText(hItem, "Отпущено");// USER START (Optionally insert code for reacting on notification message)
+        HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
         // USER END
         break;
-      // USER START (Optionally insert additional code for further notification handling)
-      // USER END
+//      case WM_NOTIFICATION_MOVED_OUT:// USER START (Optionally insert additional code for further notification handling)
+//        hItem = WM_GetDialogItem(pMsg->hWin, ID_BUTTON_0);
+//        BUTTON_SetText(hItem, "Отпущено");
+//        break;// USER END
       }
       break;
     // USER START (Optionally insert additional code for further Ids)

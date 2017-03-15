@@ -36,7 +36,7 @@
 #include "stm32f4xx_it.h"
 
 /* USER CODE BEGIN 0 */
-#include "GUI.h"
+
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -171,8 +171,9 @@ void SysTick_Handler(void)
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
   HAL_SYSTICK_IRQHandler();
-  /* USER CODE BEGIN SysTick_IRQn 1 */
   OS_TimeMS_Inc();
+  /* USER CODE BEGIN SysTick_IRQn 1 */
+
   /* USER CODE END SysTick_IRQn 1 */
 }
 

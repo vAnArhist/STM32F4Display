@@ -1,7 +1,7 @@
 #include "lwip/tcp.h"
 #include "my_tcp.h"
 #include <string.h>
-
+#include "GUI.h"
 #define MAX_BUFFER 32
 
 const char NAK[3] = {0x4E,0x41,0x4B};
@@ -123,7 +123,10 @@ static err_t MyTCP_recv(void *arg, struct tcp_pcb *pcb, struct pbuf *p, err_t er
     tcp_output(pcb);//пересылает все данные при пегеполнении вых. буфера
     }
 } 
+
 memcpy(rec, receive, p->len);//копирование с переменной ресив в массив рек
+    GUI_GotoXY(20, 60);
+    GUI_DispString(rec);
 /* End of processing, we free the pbuf */
     pbuf_free(p);
   }  

@@ -31,7 +31,7 @@ SRAM_HandleTypeDef hsram1;
 /* USER CODE BEGIN PV */
 extern int touch_y, touch_x;    //global var. for touch
 extern unsigned char touch_en; //touch Interrupt(1-pressed)
-
+extern GUI_CONST_STORAGE GUI_FONT GUI_FontArial16;
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE END PV */
@@ -51,7 +51,7 @@ extern struct netif gnetif;
 char transmitBuffer[256];
 char receiveBuffer[512];
 char rec[512];
-uint8_t IP_ADDRESS[4];
+//uint8_t IP_ADDRESS[4];
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
@@ -59,10 +59,13 @@ void User_notification(struct netif *netif)
 {
   if (netif_is_up(&gnetif))
   {
-    GUI_SetFont(&GUI_Font8x16);
-    GUI_SetBkColor(GUI_DARKGREEN);GUI_Clear();
+    GUI_SetFont(&GUI_FontArial16);
+    GUI_SetBkColor(GUI_DARKGREEN);
+    GUI_Clear();
     GUI_SetTextMode(GUI_TM_NORMAL);
-    GUI_DispStringHCenterAt("LWIP_IS_INIT_PROPERLY" , 160, 10);
+    GUI_DispStringHCenterAt("LWIP Инициализирован" , 160, 10);
+    GUI_DispStringHCenterAt("Версия гр.библиотеки:", 160, 30);
+    GUI_DispStringHCenterAt((GUI_GetVersionString()), 160, 50);	
     //GUI_DispStringHCenterAt(("IP_IS_%i",(const char *)IP_ADDRESS) , 260, 10);
     //GUI_DispString("netif_is_up");
     /* Turn On LED 1 to indicate ETH and LwIP init success*/
@@ -85,7 +88,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-
+  extern char rec[512];
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -102,7 +105,7 @@ int main(void)
   MX_SPI2_Init();
   MX_UART4_Init();
   MX_USART1_UART_Init();
-  MX_LWIP_Init();
+  MX_LWIP_Init(); 
   /* USER CODE BEGIN 2 */
    //LCD_ini();
   //LCD_Clear(0x051F);
@@ -110,38 +113,22 @@ int main(void)
   GUI_Init();                   //GUI INIT
   //CreateWindow();  
   XPT2046_Init();
-  MyTCP_init();
-  //GUI_SetFont(&GUI_Font8x16);
-//GUI_SetBkColor(GUI_RED);GUI_Clear();
-//GUI_SetPenSize(10);
-//GUI_SetColor(GUI_MAGENTA);
-//GUI_DrawLine(80, 10, 240, 90);
-//GUI_DrawLine(80, 90, 240, 10);
-//GUI_SetBkColor(GUI_BLACK);
-//GUI_SetColor(GUI_WHITE);
-//GUI_SetTextMode(GUI_TM_NORMAL);
-//GUI_DispStringHCenterAt("GUI_TM_NORMAL" , 160, 10);
-//GUI_SetTextMode(GUI_TM_REV);
-//GUI_DispStringHCenterAt("GUI_TM_REV" , 160, 26);
-//GUI_SetTextMode(GUI_TM_TRANS);
-//GUI_DispStringHCenterAt("GUI_TM_TRANS" , 160, 42);
-//GUI_SetTextMode(GUI_TM_XOR);
-//GUI_DispStringHCenterAt("GUI_TM_XOR" , 160, 58);
-//GUI_SetTextMode(GUI_TM_TRANS | GUI_TM_REV);
-//GUI_DispStringHCenterAt("GUI_TM_TRANS | GUI_TM_REV", 160, 74);
-  User_notification(&gnetif);  
+  MyTCP_init(); 
+  User_notification(&gnetif);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    
     MX_LWIP_Process();
-    GetTouchState();
-    if (touch_en == 1){
-    Usrednenie_XY(touch_x,touch_y, 20);
-    Callibrate();}
+//    GUI_DispCEOL();
+//    GUI_DispStringHCenterAt(rec, 160, 40);
+//    GetTouchState();
+//    if (touch_en == 1){
+//    Usrednenie_XY(touch_x,touch_y, 20);
+//    Callibrate();}
+    
     GUI_Delay(100);
   /* USER CODE END WHILE */
 

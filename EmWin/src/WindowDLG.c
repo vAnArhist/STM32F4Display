@@ -33,7 +33,7 @@
 #define ID_EDIT_0     (GUI_ID_USER + 0x01)
 #define ID_BUTTON_0   (GUI_ID_USER + 0x02)
 //#define BUTTON_REACT_ON_LEVEL 1 //button reaction 
-#define BUTTON_BKCOLOR1_DEFAULT GUI_DARKGREEN
+
 extern GUI_CONST_STORAGE GUI_FONT GUI_FontArial16;
 // USER START (Optionally insert additional defines)
 // USER END

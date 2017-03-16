@@ -14,7 +14,7 @@ LeaveTargetRunning=_ 0
 stlinkserialNo=24521187
 stlinkfoundProbes=
 [DebugChecksum]
-Checksum=1299609458
+Checksum=-830650573
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -81,10 +81,6 @@ ShowTimeLog=1
 SumEnabled=0
 ShowTimeSum=1
 SumSortOrder=0
-[Disassemble mode]
-mode=0
-[Breakpoints2]
-Count=0
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -92,9 +88,6 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
-[Aliases]
-Count=0
-SuppressDialog=0
 [DriverProfiling]
 Enabled=0
 Mode=3
@@ -105,3 +98,12 @@ Exclusions=
 Enabled=0
 [CallStackStripe]
 ShowTiming=1
+[Disassemble mode]
+mode=0
+[Breakpoints2]
+Bp0=_ 0 "EMUL_CODE" "{$PROJ_DIR$\..\Src\my_tcp.c}.12.1" 0 0 1 "" 0 "" 0
+Count=1
+[Aliases]
+A0=_ "E:\WORK\ALL\ETHDISP\Src\stm32f4xx_hal_msp.c" ""
+Count=1
+SuppressDialog=0

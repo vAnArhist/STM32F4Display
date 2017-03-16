@@ -25,7 +25,7 @@ if not "%~1" == "" goto debugFile
 
 @echo on 
 
-"E:\EWARM\common\bin\cspybat" -f "E:\WORK\ALL\ETHDISP\EWARM\settings\ETHDISP.ETHDISP.general.xcl" --backend -f "E:\WORK\ALL\ETHDISP\EWARM\settings\ETHDISP.ETHDISP.driver.xcl" 
+"E:\EWARM\common\bin\cspybat" -f "E:\WORK\ALL\ETHDISP\STM32F4Display\EWARM\settings\ETHDISP.ETHDISP.general.xcl" --backend -f "E:\WORK\ALL\ETHDISP\STM32F4Display\EWARM\settings\ETHDISP.ETHDISP.driver.xcl" 
 
 @echo off 
 goto end 
@@ -34,7 +34,7 @@ goto end
 
 @echo on 
 
-"E:\EWARM\common\bin\cspybat" -f "E:\WORK\ALL\ETHDISP\EWARM\settings\ETHDISP.ETHDISP.general.xcl" "--debug_file=%~1" --backend -f "E:\WORK\ALL\ETHDISP\EWARM\settings\ETHDISP.ETHDISP.driver.xcl" 
+"E:\EWARM\common\bin\cspybat" -f "E:\WORK\ALL\ETHDISP\STM32F4Display\EWARM\settings\ETHDISP.ETHDISP.general.xcl" "--debug_file=%~1" --backend -f "E:\WORK\ALL\ETHDISP\STM32F4Display\EWARM\settings\ETHDISP.ETHDISP.driver.xcl" 
 
 @echo off 
 :end

@@ -4,6 +4,7 @@
 #include "DIALOG.h"
 
 WM_HWIN CreateWindow(void);
+WM_HWIN Createtest(void);
 
 #endif
 

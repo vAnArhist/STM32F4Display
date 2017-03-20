@@ -18,6 +18,7 @@
 #include "GUI.h"        //GUI
 #include "WindowDLG.h" //определения функций 
 #include "my_tcp.h"    //фунция определения пересыла TCP
+#include "WIDGET_Multipage.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -29,8 +30,8 @@ UART_HandleTypeDef huart1;
 SRAM_HandleTypeDef hsram1;
 
 /* USER CODE BEGIN PV */
-extern int touch_y, touch_x;    //global var. for touch
-extern unsigned char touch_en; //touch Interrupt(1-pressed)
+//extern int touch_y, touch_x;    //global var. for touch
+//extern unsigned char touch_en; //touch Interrupt(1-pressed)
 extern GUI_CONST_STORAGE GUI_FONT GUI_FontArial16;
 /* Private variables ---------------------------------------------------------*/
 
@@ -114,27 +115,21 @@ int main(void)
   //CreateWindow();  
   XPT2046_Init();
   MyTCP_init(); 
-  User_notification(&gnetif);
+  //Createtest();
+  //User_notification(&gnetif);
+  MainTask();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    MX_LWIP_Process();
-//    GUI_DispCEOL();
-//    GUI_DispStringHCenterAt(rec, 160, 40);
-//    GetTouchState();
-//    if (touch_en == 1){
-//    Usrednenie_XY(touch_x,touch_y, 20);
-//    Callibrate();}
-    
-    GUI_Delay(100);
+  //MX_LWIP_Process();
+//    GUI_Delay(100); 
+//    //GUI_DispStringHCenterAt(rec, 160, 40);
   /* USER CODE END WHILE */
-
-  /* USER CODE BEGIN 3 */
-
   }
+  /* USER CODE BEGIN 3 */
   /* USER CODE END 3 */
 
 }

@@ -11,10 +11,10 @@
 #define Ywork 3538
 ////////////////////////////////////////////////////////////////////////////////
 extern SPI_HandleTypeDef hspi2;
-unsigned char touch_en;
+extern unsigned char touch_en;
 TS_State_struct TS_State;
-int touch_y, touch_x;
-uint8_t count_read = 10;
+extern int touch_y, touch_x;
+//extern uint8_t count_read = 10;
 //////////////////////////////////////////////////////////////////////////////
 
 GUI_PID_STATE TS_PID_State;
@@ -35,6 +35,7 @@ void GetTouchState (void){
     TS_PID_State.Layer = 0;
     TS_PID_State.x = 0;
     TS_PID_State.y = 0;
+    //GUI_TOUCH_GetState(&TS_PID_State);
     GUI_TOUCH_StoreStateEx(&TS_PID_State);
    }
 }
@@ -109,7 +110,7 @@ void Usrednenie_XY(int touch_x, int touch_y, uint8_t count_read){
 void Callibrate(void){
  /*На 240 точек по Х приходится 3202 ур.н.,т.е: 1 к 13.34*/
 /*На 320 точек по У приходится 3538 ур.н.,т.е: 1 к 11.05*/
-  if ((touch_x < LCD_GetXSize()) && (touch_y<LCD_GetYSize())){
+  if ((touch_x < LCD_GetXSize()) && (touch_y<LCD_GetYSize())&& touch_y > 0 && touch_x > 0){
     //GUI_TOUCH_StoreUnstable(touch_x,touch_y);}
     //GUI_PID_GetCurrentState(&TS_PID_State);
     GUI_TOUCH_StoreStateEx(&TS_PID_State);

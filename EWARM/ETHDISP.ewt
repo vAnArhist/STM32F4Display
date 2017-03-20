@@ -1190,6 +1190,9 @@
         <name>$PROJ_DIR$\..\Src\stm32f4xx_it.c</name>
       </file>
       <file>
+        <name>$PROJ_DIR$\..\Src\WIDGET_Multipage.c</name>
+      </file>
+      <file>
         <name>$PROJ_DIR$\..\Src\XPT2046.c</name>
       </file>
     </group>

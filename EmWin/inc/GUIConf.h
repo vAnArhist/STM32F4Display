@@ -53,7 +53,7 @@ Purpose     : Configures emWins abilities, fonts etc.
  
 #ifndef GUICONF_H
 #define GUICONF_H
-
+//extern GUI_CONST_STORAGE GUI_FONT GUI_FontArial16;          //подключение шрифта
 /*********************************************************************
 *
 *       Multi layer/display support
@@ -83,7 +83,6 @@ Purpose     : Configures emWins abilities, fonts etc.
 *       Default font
 */
 #define GUI_DEFAULT_FONT          &GUI_Font6x8
-
 /*********************************************************************
 *
 *         Configuration of available packages

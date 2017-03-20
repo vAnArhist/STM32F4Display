@@ -62,7 +62,7 @@ Purpose     : Display controller initialization
 //
 // Define the available number of bytes available for the GUI
 //
-#define GUI_NUMBYTES  (64*1024)//32КБ используемой памяти 0x200000-по умолчанию
+#define GUI_NUMBYTES  (64*1024)//64КБ используемой памяти 0x200000-по умолчанию
 
 /*********************************************************************
 *
@@ -91,6 +91,12 @@ void GUI_X_Config(void) {
   // Set default font
   //
   GUI_SetDefaultFont(GUI_FONT_6X8);
+  unsigned int TouchOrientation = (GUI_MIRROR_X * LCD_GetMirrorX())|(GUI_MIRROR_Y*LCD_GetMirrorY())|
+    (GUI_SWAP_XY*LCD_GetSwapXY());
+  GUI_TOUCH_SetOrientation(TouchOrientation);//установка ориентации
+  
+  GUI_TOUCH_Calibrate(GUI_COORD_X,0,320,0,4000);//калибровка по х
+  GUI_TOUCH_Calibrate(GUI_COORD_Y,0,240,4000,0);//калибровка по у
 }
 
 /*************************** End of file ****************************/

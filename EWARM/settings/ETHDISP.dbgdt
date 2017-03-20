@@ -8,18 +8,18 @@
         
       <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>1242</ColumnWidth1></Debug-Log>
       <Build>
-        <ColumnWidth0>20</ColumnWidth0>
-        <ColumnWidth1>931</ColumnWidth1>
-        <ColumnWidth2>248</ColumnWidth2>
-        <ColumnWidth3>62</ColumnWidth3>
-      </Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>931</ColumnWidth1><ColumnWidth2>248</ColumnWidth2><ColumnWidth3>62</ColumnWidth3></Build>
       <Workspace>
         <ColumnWidths>
           
           
           
           
-        <Column0>154</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+        <Column0>173</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
       </Workspace>
       <Disassembly>
         <col-names>
@@ -112,14 +112,14 @@
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Inc\main.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>38</YPos2><SelStart2>2940</SelStart2><SelEnd2>2953</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Src\XPT2046.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>19</YPos2><SelStart2>724</SelStart2><SelEnd2>741</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\EmWin\inc\BUTTON.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>89</XPos2><YPos2>158</YPos2><SelStart2>9875</SelStart2><SelEnd2>9875</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\EmWin\src\WindowDLG.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>26</YPos2><SelStart2>1813</SelStart2><SelEnd2>1828</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Src\my_tcp.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>109</YPos2><SelStart2>4473</SelStart2><SelEnd2>4473</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Src\ethernetif.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>489</YPos2><SelStart2>17203</SelStart2><SelEnd2>17203</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\EmWin\inc\GUI.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>33</XPos2><YPos2>1640</YPos2><SelStart2>72513</SelStart2><SelEnd2>72526</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Src\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>76</YPos2><SelStart2>3063</SelStart2><SelEnd2>3063</SelEnd2></Tab><ActiveTab>7</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Src\WIDGET_Multipage.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>287</YPos2><SelStart2>11153</SelStart2><SelEnd2>11166</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Src\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>77</YPos2><SelStart2>3098</SelStart2><SelEnd2>3098</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Inc\XPT2046.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>224</SelStart2><SelEnd2>224</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Src\stm32f4xx_it.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>58</YPos2><SelStart2>2958</SelStart2><SelEnd2>2958</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\EmWin\src\WindowDLG.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>84</YPos2><SelStart2>3039</SelStart2><SelEnd2>3044</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\..\Src\XPT2046.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>15</YPos2><SelStart2>655</SelStart2><SelEnd2>655</SelEnd2></Tab><ActiveTab>5</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-0472A830><key>iaridepm.enu1</key></Toolbar-0472A830></Sizes></Row0><Row1><Sizes><Toolbar-16012AA0><key>debuggergui.enu1</key></Toolbar-16012AA0></Sizes></Row1><Row2><Sizes><Toolbar-160126B8><key>armstlink2.enu1</key></Toolbar-160126B8></Sizes></Row2></Top><Left><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>434</Bottom><Right>245</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>153965</sizeHorzCX><sizeHorzCY>275862</sizeHorzCY><sizeVertCX>190146</sizeVertCX><sizeVertCY>601379</sizeVertCY></Rect></Wnd5></Sizes></Row0></Left><Right><Row0><Sizes><Wnd6><Rect><Top>-2</Top><Left>-2</Left><Bottom>434</Bottom><Right>198</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>153965</sizeHorzCX><sizeHorzCY>275862</sizeHorzCY><sizeVertCX>153965</sizeVertCX><sizeVertCY>601379</sizeVertCY></Rect></Wnd6></Sizes></Row0><Row1><Sizes><Wnd7><Rect><Top>-2</Top><Left>196</Left><Bottom>434</Bottom><Right>396</Right><x>196</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>153965</sizeHorzCX><sizeHorzCY>275862</sizeHorzCY><sizeVertCX>153965</sizeVertCX><sizeVertCY>601379</sizeVertCY></Rect></Wnd7></Sizes></Row1></Right><Bottom><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>1301</Right><x>-2</x><y>-2</y><xscreen>1303</xscreen><yscreen>200</yscreen><sizeHorzCX>1003079</sizeHorzCX><sizeHorzCY>275862</sizeHorzCY><sizeVertCX>153965</sizeVertCX><sizeVertCY>275862</sizeVertCY></Rect></Wnd4></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-00EA9EB8><key>iaridepm.enu1</key></Toolbar-00EA9EB8></Sizes></Row0><Row1><Sizes><Toolbar-1DA4D3E8><key>debuggergui.enu1</key></Toolbar-1DA4D3E8></Sizes></Row1><Row2><Sizes><Toolbar-1DA4CDA8><key>armstlink2.enu1</key></Toolbar-1DA4CDA8></Sizes></Row2></Top><Left><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>434</Bottom><Right>264</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>153965</sizeHorzCX><sizeHorzCY>275862</sizeHorzCY><sizeVertCX>204773</sizeVertCX><sizeVertCY>601379</sizeVertCY></Rect></Wnd5></Sizes></Row0></Left><Right><Row0><Sizes><Wnd6><Rect><Top>-2</Top><Left>-2</Left><Bottom>434</Bottom><Right>155</Right><x>-2</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>153965</sizeHorzCX><sizeHorzCY>275862</sizeHorzCY><sizeVertCX>120862</sizeVertCX><sizeVertCY>601379</sizeVertCY></Rect></Wnd6></Sizes></Row0><Row1><Sizes><Wnd7><Rect><Top>-2</Top><Left>153</Left><Bottom>434</Bottom><Right>353</Right><x>153</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>153965</sizeHorzCX><sizeHorzCY>275862</sizeHorzCY><sizeVertCX>153965</sizeVertCX><sizeVertCY>601379</sizeVertCY></Rect></Wnd7></Sizes></Row1></Right><Bottom><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>198</Bottom><Right>1301</Right><x>-2</x><y>-2</y><xscreen>1303</xscreen><yscreen>200</yscreen><sizeHorzCX>1003079</sizeHorzCX><sizeHorzCY>275862</sizeHorzCY><sizeVertCX>153965</sizeVertCX><sizeVertCY>275862</sizeVertCY></Rect></Wnd4></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 
